@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prof. Ricardo Custódio - UFSC</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .title {
+            font-size: 1.3rem;
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item:hover {
+            color: #667eea;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .bio {
+            text-align: justify;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .research-areas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .research-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .research-card i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .recent-papers {
+            list-style: none;
+        }
+
+        .paper-item {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .paper-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .paper-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .paper-authors {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .paper-venue {
+            color: #667eea;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .achievements {
+            list-style: none;
+        }
+
+        .achievement-item {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #667eea20, #764ba220);
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .achievement-year {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+
+        .nav-tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 0.5rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-tab {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-tab:hover, .nav-tab.active {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile-image">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+            <h1 class="name">Prof. Ricardo Custódio</h1>
+            <p class="title">Full Professor | Department of Informatics and Statistics | UFSC</p>
+            <p class="title">Coordinator of the Computer Security Laboratory (LabSEC)</p>
+            
+            <div class="contact-info">
+                <a href="mailto:ricardo.custodio@ufsc.br" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    ricardo.custodio@ufsc.br
+                </a>
+                <a href="http://lattes.cnpq.br/9716092379282146" class="contact-item" target="_blank">
+                    <i class="fas fa-id-card"></i>
+                    Lattes CNPq
+                </a>
+                <a href="https://orcid.org/0000-0001-9611-5694" class="contact-item" target="_blank">
+                    <i class="fab fa-orcid"></i>
+                    ORCID
+                </a>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Florianópolis, SC
+                </div>
+            </div>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('about')">About</button>
+            <button class="nav-tab" onclick="showTab('research')">Research</button>
+            <button class="nav-tab" onclick="showTab('publications')">Publications</button>
+            <button class="nav-tab" onclick="showTab('projects')">Projects</button>
+            <button class="nav-tab" onclick="showTab('achievements')">Achievements</button>
+        </nav>
+
+        <div id="about" class="tab-content active">
+            <div class="main-content">
+                <div class="left-column">
+                    <section class="section">
+                        <h2><i class="fas fa-user"></i> Biography</h2>
+                        <div class="biography-content">
+                            <div class="professor-photo">
+                                <img src="data:image/jpeg;base64,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
+
+                    <section class="section">
+                        <h2><i class="fas fa-microscope"></i> Research Areas</h2>
+                        <div class="research-areas">
+                            <div class="research-card">
+                                <i class="fas fa-shield-alt"></i>
+                                <h3>Information Security</h3>
+                                <p>Cryptographic protocols and secure systems</p>
+                            </div>
+                            <div class="research-card">
+                                <i class="fas fa-key"></i>
+                                <h3>Cryptography</h3>
+                                <p>Cryptographic algorithms and applications</p>
+                            </div>
+                            <div class="research-card">
+                                <i class="fas fa-certificate"></i>
+                                <h3>Public Key Infrastructure</h3>
+                                <p>PKI and digital certification</p>
+                            </div>
+                            <div class="research-card">
+                                <i class="fas fa-quantum"></i>
+                                <h3>Post-Quantum Cryptography</h3>
+                                <p>Quantum-resistant algorithms</p>
+                            </div>
+                            <div class="research-card">
+                                <i class="fas fa-id-badge"></i>
+                                <h3>Digital Identity</h3>
+                                <p>Electronic identity management</p>
+                            </div>
+                            <div class="research-card">
+                                <i class="fas fa-file-signature"></i>
+                                <h3>Digital Signature</h3>
+                                <p>Secure electronic documents</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="right-column">
+                    <section class="section">
+                        <h2><i class="fas fa-chart-bar"></i> Statistics</h2>
+                        <div class="stats">
+                            <div class="stat-card">
+                                <span class="stat-number">24</span>
+                                <span>Journal Articles</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">102</span>
+                                <span>Conference Papers</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">70</span>
+                                <span>Master's Supervised</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">4</span>
+                                <span>PhDs Supervised</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-number">30+</span>
+                                <span>Years of Experience</span>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="research" class="tab-content">
+            <section class="section">
+                <h2><i class="fas fa-flask"></i> Current Research Lines</h2>
+                <div class="research-areas">
+                    <div class="research-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Digital Certification and Electronic Identity</h3>
+                        <p>Development of an integrated PKI and EI proposal, allowing users to have a useful, affordable and modern EI that makes use of on-demand PKI.</p>
+                    </div>
+                    <div class="research-card">
+                        <i class="fas fa-file-contract"></i>
+                        <h3>Electronic Document Security</h3>
+                        <p>New methods for digital signature of electronic documents, including post-quantum algorithms and improvements in the visual representation of digital signatures.</p>
+                    </div>
+                    <div class="research-card">
+                        <i class="fas fa-quantum"></i>
+                        <h3>Post-Quantum Cryptography</h3>
+                        <p>Development of cryptographic algorithms resistant to quantum computer attacks.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="publications" class="tab-content">
+            <section class="section">
+                <h2><i class="fas fa-file-alt"></i> Recent Publications</h2>
+                <ul class="recent-papers">
+                    <li class="paper-item">
+                        <div class="paper-title">A Concrete LIP-Based KEM With Simple Lattices</div>
+                        <div class="paper-authors">DE CASTRO BIAGE, GUSTAVO; ZAMBONIN, GUSTAVO; IDALINO, THAÍS B.; PANARIO, DANIEL; CUSTODIO, RICARDO</div>
+                        <div class="paper-venue">IEEE Access, v.12, p.16408-16420, 2024</div>
+                    </li>
+                    <li class="paper-item">
+                        <div class="paper-title">Probabilistic root finding in code-based cryptography</div>
+                        <div class="paper-authors">MARCHIORI, D.; CUSTODIO, R. F.; PANARIO, DANIEL; MOURA, LUCIA</div>
+                        <div class="paper-venue">Journal of Cryptographic Engineering, v.14, p.71-85, 2024</div>
+                    </li>
+                    <li class="paper-item">
+                        <div class="paper-title">Seamless Transition to Post-Quantum TLS 1.3: A Hybrid Approach Using Identity-Based Encryption</div>
+                        <div class="paper-authors">ASTRIZI, THIAGO LEUCZ; CUSTÓDIO, RICARDO</div>
+                        <div class="paper-venue">SENSORS, v.24, p.7300, 2024</div>
+                    </li>
+                    <li class="paper-item">
+                        <div class="paper-title">Monitoring Key Pair Usage through Distributed Ledgers and One-Time Signatures</div>
+                        <div class="paper-authors">MAYR, LUCAS; PALMA, LUCAS; ZAMBONIN, G.; SILVANO, WELLINGTON; CUSTODIO, R. F.</div>
+                        <div class="paper-venue">INFORMATION, v.14, p.523-537, 2023</div>
+                    </li>
+                    <li class="paper-item">
+                        <div class="paper-title">Self-Sovereign Identity: A Systematic Review, Mapping and Taxonomy</div>
+                        <div class="paper-authors">SCHARDONG, FREDERICO; CUSTÓDIO, RICARDO</div>
+                        <div class="paper-venue">SENSORS, v.22, p.5641, 2022</div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <div id="projects" class="tab-content">
+            <section class="section">
+                <h2><i class="fas fa-project-diagram"></i> Current Projects</h2>
+                <div class="research-areas">
+                    <div class="research-card">
+                        <i class="fas fa-certificate"></i>
+                        <h3>Digital Certification and Electronic Identity (2021-Present)</h3>
+                        <p>Development of an integrated PKI and EI proposal in partnership with IFRS.</p>
+                    </div>
+                    <div class="research-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Electronic Document Security (2021-Present)</h3>
+                        <p>New digital signature methods with post-quantum algorithms and intelligent key management.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2><i class="fas fa-handshake"></i> Institutional Collaborations</h2>
+                <ul class="achievements">
+                    <li class="achievement-item">
+                        <div class="achievement-year">National Operator of Civil Registry of Natural Persons (ON-RCPN)</div>
+                        <div>Responsible for Research, Development and Innovation</div>
+                    </li>
+                    <li class="achievement-item">
+                        <div class="achievement-year">National Network for Teaching and Research (RNP)</div>
+                        <div>Collaborator</div>
+                    </li>
+                    <li class="achievement-item">
+                        <div class="achievement-year">CNPq</div>
+                        <div>Project reviewer for funding agency</div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <div id="achievements" class="tab-content">
+
+            <section class="section">
+                <h2><i class="fas fa-graduation-cap"></i> Academic Background</h2>
+                <ul class="achievements">
+                    <li class="achievement-item">
+                        <div class="achievement-year">2005-2006</div>
+                        <div><strong>Post-Doctorate</strong><br>George Washington University, United States</div>
+                    </li>
+                    <li class="achievement-item">
+                        <div class="achievement-year">1997-1999</div>
+                        <div><strong>PhD in Computer Science</strong><br>Institute of Informatics, UFRGS<br><em>Nonlinear Analysis of Sound Patterns: A Case Study for Pulmonary Sounds</em></div>
+                    </li>
+                    <li class="achievement-item">
+                        <div class="achievement-year">1986-1990</div>
+                        <div><strong>Master's in Electrical Engineering</strong><br>UFSC<br><em>Parametric Coding of Voice Signals with Multi-Pulse Excitation</em></div>
+                    </li>
+                    <li class="achievement-item">
+                        <div class="achievement-year">1981-1985</div>
+                        <div><strong>Bachelor's in Electrical Engineering</strong><br>UFSC</div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Add smooth scrolling and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate cards on load
+            const cards = document.querySelectorAll('.research-card, .stat-card, .paper-item, .achievement-item');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
